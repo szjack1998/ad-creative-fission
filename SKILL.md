@@ -1,5 +1,8 @@
 ---
 name: 强哥广告skill
+displayName: 强哥广告skill
+slug: qiangge-ad-skill
+version: "1.0.0"
 description: 广告创意「成因分析 + 脚本裂变」一体化工作站。当用户需要拆解爆款素材、把创意变量化、给素材库打标签、做创意归因、分析腾讯/巨量等广告数据，或基于已有脚本库(Excel) × 视频表现数据批量裂变新脚本时使用。触发词："创意成因分析"、"创意变量化"、"素材打标签"、"爆款拆解"、"广告创意优化"、"脚本裂变"、"裂变脚本"、"视频脚本"、"广告文案"、"强哥广告"、"creatibi"、"creative causal analysis"、"fission"。
 ---
 

@@ -141,10 +141,10 @@ def detect_series(name):
     # yy / yg 系列: 取最靠近的标记
     m = re.search(r"(yg|yyy|y|y0{0,2})[-_]?\d*", n)
     if m:
-        token = m.group(1)
-        if token.startswith("yg") and "yyy" not in token:
+        prefix = m.group(1)
+        if prefix.startswith("yg") and "yyy" not in prefix:
             return "yg"
-        if "yyy" in token or token == "yy":
+        if "yyy" in prefix or prefix == "yy":
             return "yyy"
     if "yg" in n:
         return "yg"
