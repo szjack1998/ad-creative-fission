@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-强哥广告skill · 真实数据版成因分析 + 脚本裂变
+爆款素材拆解裂变器 · 真实数据版成因分析 + 脚本裂变
 ==============================================
 数据源：videos_multimodal_fixed.csv（妙问API拉取的素材：真实文案+真实消耗+已标注钩子/品类/视频类型；本文件附脱敏示例数据）
 与 fission_tool.py 区别：不依赖Excel脚本库/命名匹配，直接用真实素材做归因与裂变。
@@ -265,7 +265,7 @@ ul{{margin:6px 0 6px 18px}} li{{margin:7px 0;font-size:12.5px;line-height:1.75}}
 @media(max-width:760px){{.metrics{{grid-template-columns:repeat(3,1fr)}}.fission{{grid-template-columns:1fr}}}}
 </style></head><body>
 <h1>某教育行业客户 · 真实数据版「成因分析 + 脚本裂变」</h1>
-<p class="sub">强哥广告skill · 数据源：妙问API拉取素材（真实文案+真实消耗）· 本示例为脱敏演示数据 · 生成 {now}</p>
+<p class="sub">爆款素材拆解裂变器 · 数据源：妙问API拉取素材（真实文案+真实消耗）· 本示例为脱敏演示数据 · 生成 {now}</p>
 
 <div class="card"><div class="metrics">
 <div class="metric"><div class="v" style="color:#534AB7">{len(rows)}</div><div class="l">真实素材</div></div>
@@ -313,7 +313,7 @@ ul{{margin:6px 0 6px 18px}} li{{margin:7px 0;font-size:12.5px;line-height:1.75}}
 <thead><tr><th>素材ID</th><th>类别</th><th>钩子</th><th>视频类型</th><th>花费</th><th>曝光</th><th>点击</th><th>CTR</th><th>CVR</th><th>转化</th><th>真实文案</th></tr></thead>
 <tbody>{appendix_html()}</tbody></table></div>
 
-<div style="text-align:center;padding:24px 0;color:#888;font-size:11px">强哥广告skill · 真实数据版 · 妙问API → 多模态拆文案 → 真实消耗归因 → 裂变</div>
+<div style="text-align:center;padding:24px 0;color:#888;font-size:11px">爆款素材拆解裂变器 · 真实数据版 · 妙问API → 多模态拆文案 → 真实消耗归因 → 裂变</div>
 </body></html>"""
 
 with open(OUT,'w',encoding='utf-8') as f:

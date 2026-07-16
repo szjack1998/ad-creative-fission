@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-强哥广告skill · 真实数据版裂变 v2（制片级）
+爆款素材拆解裂变器 · 真实数据版裂变 v2（制片级）
 整合：通顺文案(videos_multimodal_fixed.csv) + 真实消耗(dynamic_analysis.json) + 动态视觉格式洞察
 每个裂变变体 = 已验证高效视觉格式 + 镜头脚本 + 口播文案 + 钩子 + 测试假设 + 母本来源
 纯静态HTML，零JS

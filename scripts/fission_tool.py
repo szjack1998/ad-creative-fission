@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-强哥广告skill · 脚本裂变工具 fission_tool.py
+爆款素材拆解裂变器 · 脚本裂变工具 fission_tool.py
 ============================================
 自动流程：读 Excel 脚本库 -> 读视频表现 CSV -> 命名匹配 -> 指标归因
         -> 基于 winning 母本 + 模板池生成裂变变体 -> 输出 HTML 报告
@@ -307,7 +307,7 @@ def render_html(videos, by_series, winner, zero_cvr, high_ctr_zero,
     alert_line = ", ".join(html.escape(v["name"]) for v in high_ctr_zero) or "无"
 
     html_doc = f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>强哥广告 · 裂变报告</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>爆款素材拆解裂变器 · 裂变报告</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#F8F8F7;color:#2C2C2A;line-height:1.6;font-size:13px;padding:20px;max-width:1100px;margin:0 auto}}
@@ -335,7 +335,7 @@ td{{padding:8px 9px;border-bottom:.5px solid rgba(44,44,42,.1);vertical-align:to
 .hl.r{{background:#FCEBEB;color:#E24B4A}} .hl.g{{background:#EAF3DE;color:#3B6D11}} .hl.a{{background:#FAEEDA;color:#BA7517}}
 @media(max-width:700px){{.metrics{{grid-template-columns:repeat(2,1fr)}}.fission{{grid-template-columns:1fr}}}}
 </style></head><body>
-<h1>强哥广告 · 脚本裂变报告</h1>
+<h1>爆款素材拆解裂变器 · 脚本裂变报告</h1>
 <p class="sub">自动生成 · {now} · 数据源: 视频CSV × Excel脚本库({scripts_count}条)</p>
 
 <div class="card"><div class="metrics">
@@ -358,7 +358,7 @@ td{{padding:8px 9px;border-bottom:.5px solid rgba(44,44,42,.1);vertical-align:to
 <div class="hl a">以下变体由「winning母本结构 + 钩子/人群/利益模板池」规则生成，作为创作起点；最终文案请结合品牌调性润色，并小预算实测验证。</div>
 <div class="card"><div class="fission">{fission_html}</div></div>
 
-<div style="text-align:center;padding:24px 0;color:#888;font-size:11px">强哥广告skill · fission_tool.py · 自动生成</div>
+<div style="text-align:center;padding:24px 0;color:#888;font-size:11px">爆款素材拆解裂变器 · fission_tool.py · 自动生成</div>
 </body></html>"""
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html_doc)
@@ -369,7 +369,7 @@ td{{padding:8px 9px;border-bottom:.5px solid rgba(44,44,42,.1);vertical-align:to
 # 主流程
 # ============================================================
 def main():
-    ap = argparse.ArgumentParser(description="强哥广告脚本裂变工具")
+    ap = argparse.ArgumentParser(description="爆款素材拆解裂变器脚本裂变工具")
     ap.add_argument("--scripts", required=True, help="脚本库 xlsx 路径")
     ap.add_argument("--videos", required=True, help="视频表现 CSV 路径")
     ap.add_argument("--output", default="裂变报告.html", help="输出 HTML 路径")
