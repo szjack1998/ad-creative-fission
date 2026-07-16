@@ -17,7 +17,7 @@ python scripts/real_fission.py --base ./examples
 python scripts/real_fission_v2.py --base ./examples
 ```
 
-即可在 `examples/` 下生成 `xincheng_real_fission_report.html` / `xincheng_real_fission_v2_report.html`。
+即可在 `examples/` 下生成 `demo_real_fission_report.html` / `demo_real_fission_v2_report.html`。
 
 > 注意：`real_fission_v2.py` 顶部的 `FMT` 字典是按原账户写的素材 ID → 视觉格式映射。
 > 示例 ID（`10000000001` 等）不在其中，会**自动回退**到 `dynamic_analysis.json` 的 `style_summary` 字段，

@@ -81,7 +81,7 @@ def extract_segments(mat_id, n_seg=4, per_seg=6, out_dir=None):
     return results
 
 if __name__ == '__main__':
-    mat_id = sys.argv[1] if len(sys.argv) > 1 else '39158668835'
+    mat_id = sys.argv[1] if len(sys.argv) > 1 else '10000000001'
     n_seg = int(sys.argv[2]) if len(sys.argv) > 2 else 4
     per_seg = int(sys.argv[3]) if len(sys.argv) > 3 else 6
     extract_segments(mat_id, n_seg, per_seg)

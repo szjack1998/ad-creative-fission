@@ -2,9 +2,9 @@
 """
 强哥广告skill · 真实数据版成因分析 + 脚本裂变
 ==============================================
-数据源：videos_multimodal_fixed.csv（妙问API拉取的19条真实素材：真实文案+真实消耗+已标注钩子/品类/视频类型）
+数据源：videos_multimodal_fixed.csv（妙问API拉取的素材：真实文案+真实消耗+已标注钩子/品类/视频类型；本文件附脱敏示例数据）
 与 fission_tool.py 区别：不依赖Excel脚本库/命名匹配，直接用真实素材做归因与裂变。
-输出：xincheng_real_fission_report.html（纯静态，零JS，避免空白问题）
+输出：demo_real_fission_report.html（纯静态，零JS，避免空白问题）
 """
 import csv, os, html
 from datetime import datetime
@@ -22,7 +22,7 @@ def _resolve_base():
 
 BASE = _resolve_base()
 CSV = os.path.join(BASE, 'videos_multimodal_fixed.csv')
-OUT = os.path.join(BASE, 'xincheng_real_fission_report.html')
+OUT = os.path.join(BASE, 'demo_real_fission_report.html')
 
 # ---------- 1. 读真实数据 ----------
 rows = []
@@ -86,7 +86,7 @@ hp_orig  = [r for r in orig if r['证书类别']=='健康管理师']
 ai_mother  = max(ai_orig, key=lambda r:r['eff'])
 hp_mother  = max(hp_orig, key=lambda r:r['eff'])
 
-# ---------- 5. 真实变量池（从19条真实文案归纳，非硬编码通用模板） ----------
+# ---------- 5. 示例变量池（从脱敏示例文案归纳，非硬编码通用模板） ----------
 REAL_HOOKS = {
  '权威背书/含金量': '今年含金量比较高，是国家认可、企业抢着要的职业资格',
  '稀缺性/FOMO': '现在知道的人很少，但未来很吃香，26年拿下就能远远甩开身边人',
@@ -129,9 +129,9 @@ def build(cert, hk, pn, bi, ci):
 # 每条：(优先级, 品类, 钩子, 人群, 利益idx, CTAidx, 测试假设)
 FISSION_PLAN = [
  # P0 × 4：复制 winning 结构，换开场/场景，验证跨人群稳定性
- ('P0','健康管理师','权威背书/含金量','通用',0,2,'复制40632415704母本(转化691)，换权威背书钩子验证跨账户稳定性'),
+ ('P0','健康管理师','权威背书/含金量','通用',0,2,'复制EDU-V01母本（高转化），换权威背书钩子验证跨账户稳定性'),
  ('P0','健康管理师','时间窗口/低门槛','宝妈',3,0,'winning结构+宝妈人群，验证女性/家庭决策人群CVR'),
- ('P0','AI应用工程师','稀缺性/FOMO','通用',0,3,'复制39158668835母本(转化625)，强化FOMO钩子'),
+ ('P0','AI应用工程师','稀缺性/FOMO','通用',0,3,'复制EDU-V05母本（高转化），强化FOMO钩子'),
  ('P0','AI应用工程师','趋势驱动/零门槛','转行族',1,1,'AI母本+转行族，验证不限专业零基础卖点对跨行人群'),
  # P1 × 6：钩子对比 A/B
  ('P1','健康管理师','行为中断','打工人',2,0,'行为中断钩子 vs 权威背书，对比打工人CTR'),
@@ -235,7 +235,7 @@ conclusions = f"""
 """.replace('cert','证书类别')
 
 doc = f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>新程教育 · 真实数据版成因分析+脚本裂变</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>某教育行业客户 · 真实数据版成因分析+脚本裂变</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#F8F8F7;color:#2C2C2A;line-height:1.65;font-size:13px;padding:20px;max-width:1180px;margin:0 auto}}
@@ -264,8 +264,8 @@ td{{padding:7px 9px;border-bottom:.5px solid rgba(44,44,42,.1);vertical-align:to
 ul{{margin:6px 0 6px 18px}} li{{margin:7px 0;font-size:12.5px;line-height:1.75}}
 @media(max-width:760px){{.metrics{{grid-template-columns:repeat(3,1fr)}}.fission{{grid-template-columns:1fr}}}}
 </style></head><body>
-<h1>新程教育 · 真实数据版「成因分析 + 脚本裂变」</h1>
-<p class="sub">强哥广告skill · 数据源：妙问API拉取19条真实素材（真实文案+真实消耗）· 生成 {now}</p>
+<h1>某教育行业客户 · 真实数据版「成因分析 + 脚本裂变」</h1>
+<p class="sub">强哥广告skill · 数据源：妙问API拉取素材（真实文案+真实消耗）· 本示例为脱敏演示数据 · 生成 {now}</p>
 
 <div class="card"><div class="metrics">
 <div class="metric"><div class="v" style="color:#534AB7">{len(rows)}</div><div class="l">真实素材</div></div>

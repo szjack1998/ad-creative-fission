@@ -16,8 +16,8 @@
 CSV 格式约定 (列名不区分大小写, 自动识别):
   name, date, spend, ctr, cvr        # cvr 也可用 download_rate / conversion_rate 列名
   例:
-    0415-新程教育-yg11,06-18,226,1.22,7.41
-    6_22-新程教育-yyy-3,06-22,4109,0.97,33.31
+    0415-某教育行业客户-yg11,06-18,226,1.22,7.41
+    6_22-某教育行业客户-yyy-3,06-22,4109,0.97,33.31
 
 依赖: openpyxl (读xlsx) + 标准库 csv/html。
   pip install openpyxl

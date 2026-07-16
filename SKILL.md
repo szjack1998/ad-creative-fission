@@ -2,7 +2,7 @@
 name: 强哥广告skill
 displayName: 强哥广告skill
 slug: qiangge-ad-skill
-version: "1.0.0"
+version: "1.1.0"
 description: 广告创意「成因分析 + 脚本裂变」一体化工作站。当用户需要拆解爆款素材、把创意变量化、给素材库打标签、做创意归因、分析腾讯/巨量等广告数据，或基于已有脚本库(Excel) × 视频表现数据批量裂变新脚本时使用。触发词："创意成因分析"、"创意变量化"、"素材打标签"、"爆款拆解"、"广告创意优化"、"脚本裂变"、"裂变脚本"、"视频脚本"、"广告文案"、"强哥广告"、"creatibi"、"creative causal analysis"、"fission"。
 ---
 
@@ -130,10 +130,10 @@ for r in ws.iter_rows(min_row=1, max_row=ws.max_row, max_col=ws.max_column, valu
 
 ---
 
-## 实战案例（新程教育 · 健康管理师证书）
-- 数据：7 条腾讯广告视频（总花费 ¥7,287），Excel 脚本库 33 条。
-- 关键发现：yg11 效率王（CVR 7.41%，但预算仅 ¥226 被低估）；数字人 & yyy-10 零转化（高点击≠目标用户）；图文 CPM 仅 ¥61（高性价比）。
-- 裂变产出：18 条新脚本（P0×4 / P1×6 / P2×5 / 大字报×3），母本 = yg11 的"逼着自己去考…两个月后哭着感谢自己"结构。
+## 实战案例（某教育行业客户 · 健康管理师 / AI应用工程师证书，示例已脱敏）
+- 数据：示例客户 7 条腾讯广告视频（总花费约 ¥7,000），Excel 脚本库 33 条。
+- 关键发现：某高 CVR 母本（CVR 约 7%，但预算仅 ¥200+ 被低估）；数字人 & 特定人群锚定素材零转化（高点击≠目标用户）；图文 CPM 仅约 ¥60（高性价比）。
+- 裂变产出：18 条新脚本（P0×4 / P1×6 / P2×5 / 大字报×3），母本 = 一条"紧迫感+低门槛"结构的高效率素材。
 - 合规红线：禁"包过/100%拿证/官方指定"等绝对化用语；收入承诺加"可能/有机会"；证书名称用官方口径（健康管理师职业技能等级证书）。
 
 ---
@@ -196,7 +196,7 @@ python dynamic_analyzer.py
 每条输出的核心字段：
 ```json
 {
-  "material_id": "40632415704",
+  "material_id": "EDU-V01",
   "duration_s": 19.0,
   "fps": 30.0,
   "resolution": "720x1280",
@@ -248,7 +248,7 @@ python dynamic_analyzer.py
 
 ```bash
 python render_dynamic_report.py
-# → xincheng_dynamic_analysis_report.html (base64内嵌图片，零JS)
+# → demo_dynamic_analysis_report.html (base64内嵌图片，零JS)
 ```
 
 报告包含：
@@ -262,22 +262,22 @@ python render_dynamic_report.py
   - 特殊发现标注（红色高亮）
   - 缩略图预览
 
-### 实战发现的视觉格式分类（新程教育 19 条真实素材）
+### 实战发现的视觉格式分类（示例客户 · 19 条素材，数据已脱敏）
 
 | 格式 | 数量 | 代表素材 | 典型特征 | 表现规律 |
 |------|------|----------|----------|----------|
-| **户外真人+证书展示** | 2 | 40632415704, 41754594941 | 自然光+手持红证书+手势丰富 | 花费王+CVR高(3~5%)——信任感最强 |
-| **白底口播+动态字卡** | 10+ | 39158668835, 38962770012 等 | 白底单机位+全屏字幕/大字报切换 | 主力形式，CTR高但CVR分化严重 |
-| **纯图文信息卡** | 2 | 41379732140, 42117789987 | 绿色/米黄底+文字卡片轮播 | **CVR王**(5.24%)！超短(7~19s)直投信息 |
-| **多场景混剪** | 2 | 40457882068, 39314358212 | ≥3个独立场景硬切 | 运动幅度最高(17~24)，CVR也不错(2~5%) |
-| **科技风开场→口播** | 1 | 39150194052 | 暗场科技蓝(~2s)→切白底 | CTR绝对王(6%)但CVR最低(0.43%)——钩子太泛 |
+| **户外真人+证书展示** | 2 | EDU-V01, EDU-V02 | 自然光+手持证书+手势丰富 | 花费高+CVR较高(约3~5%)——信任感最强 |
+| **白底口播+动态字卡** | 10+ | EDU-V05, EDU-V07 等 | 白底单机位+全屏字幕/大字报切换 | 主力形式，CTR高但CVR分化 |
+| **纯图文信息卡** | 2 | EDU-V03, EDU-V04 | 绿/米黄底+文字卡片轮播 | CVR较高(约5%)！超短(7~19s)直投信息 |
+| **多场景混剪** | 2 | EDU-V17, EDU-V18 | ≥3个独立场景硬切 | 运动幅度高，CVR也不错(约2~5%) |
+| **科技风开场→口播** | 1 | EDU-V06 | 暗场科技蓝(~2s)→切白底 | CTR高(约6%)但CVR低(约0.4%)——钩子太泛 |
 
-### 关键洞察（来自动态分析）
+### 关键洞察（来自动态分析，示例数据已脱敏）
 
 1. **户外真人 > 白底口播 > 科技风开场**（CVR 排序）
-2. **纯图文 = 最低成本 + 最高 CVR 效率**（7 秒直投信息不废话）
+2. **纯图文 = 最低成本 + 最高 CVR 效率**（超短直投信息不废话）
 3. **场景硬切促进转化**（多场景混剪类 CVR 普遍高于单镜头口播）
-4. **CTR 高 ≠ 好**（科技风开场 CTR 6% 但 CVR 0.43%，吸引非目标人群）
+4. **CTR 高 ≠ 好**（科技风开场 CTR高但CVR低，吸引非目标人群）
 
 ---
 
@@ -291,7 +291,7 @@ python render_dynamic_report.py
 | `dynamic_analyzer.py` | opencv程序化动态分析全部视频 | `python dynamic_analyzer.py` → dynamic_analysis.json |
 | `render_dynamic_report.py` | 合并L1+L2+L3数据生成HTML报告 | `python render_dynamic_report.py` |
 | `real_fission.py` | 真实数据版成因分析+裂变(不需要Excel) | `python real_fission.py` |
-| `real_fission_v2.py` | **制片级裂变**：绑定已验证高效视觉格式+镜头脚本+口播文案+测试假设 | `python real_fission_v2.py` → xincheng_real_fission_v2_report.html |
+| `real_fission_v2.py` | **制片级裂变**：绑定已验证高效视觉格式+镜头脚本+口播文案+测试假设 | `python real_fission_v2.py` → demo_real_fission_v2_report.html |
 | `rebuild_v3_static.py` | 纯静态HTML渲染器(通用模板) | `python rebuild_v3_static.py` |
 
 **依赖**：
@@ -319,7 +319,7 @@ python render_dynamic_report.py
 
 - **协同红线**：动态分析报告的卡片模板**必须包含"通顺文案"块**（来自 `videos_multimodal_fixed.csv` 的 `通顺文案` 列）。动态分析是"在文案基础上加视觉层"，不是另起炉灶把文案丢掉——v3 曾因渲染脚本漏写 copy 字段导致文案消失，v4 已修复（每卡片含 `📝 通顺文案（多模态拆解）` 块）。
 - **数据同源**：真实消耗（CTR/CVR/花费）统一以妙问API拉取的 `material_video.json` 为权威源；文案以 `videos_multimodal_fixed.csv` 为权威源（已修正字段映射错误 + 截断补全）。
-- **交付物关联**：`xincheng_multimodal_copy_report.html`（文案）、`xincheng_dynamic_analysis_report.html`（动态+文案）、`xincheng_real_fission_report.html`（裂变）三者共享同一批素材ID，可交叉对照。
+- **交付物关联**：`demo_multimodal_copy_report.html`（文案）、`demo_dynamic_analysis_report.html`（动态+文案）、`demo_real_fission_report.html`（裂变）三者共享同一批素材ID，可交叉对照。
 
 ## 注意事项
 - 只做分析与建议，不代投、不改平台数据。

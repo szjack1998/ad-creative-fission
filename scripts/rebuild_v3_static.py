@@ -13,7 +13,7 @@ def _resolve_base():
 base = _resolve_base()
 csv_path = os.path.join(base, 'videos_multimodal.csv')
 grid_dir = os.path.join(base, 'grid_frames')
-html_path = os.path.join(base, 'xincheng_multimodal_copy_report.html')
+html_path = os.path.join(base, 'demo_multimodal_copy_report.html')
 
 rows = []
 with open(csv_path, 'r', encoding='utf-8-sig') as f:
@@ -82,7 +82,7 @@ full_html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>新程教育 &middot; 视频素材多模态文案拆解报告</title>
+<title>某教育行业客户 &middot; 视频素材多模态文案拆解报告</title>
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f8f9fc;color:#1e293b;padding:20px}}
@@ -109,7 +109,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 .gn{{color:#16a34a}}.rd{{color:#dc2626}}
 </style></head>
 <body>
-<div class="header"><h1>&#x1F3AC; 新程教育 &middot; 视频素材多模态文案拆解报告</h1>
+<div class="header"><h1>&#x1F3AC; 某教育行业客户 &middot; 视频素材多模态文案拆解报告</h1>
 <p>Top{len(rows)} 视频 &middot; 多模态逐帧阅读通顺口播稿 &middot; 腾讯广告妙问API拉取真实消耗数据</p></div>
 <div class="stats">
 <div class="sc"><div class="n">{len(rows)}</div><div class="l">拆解素材数</div></div>

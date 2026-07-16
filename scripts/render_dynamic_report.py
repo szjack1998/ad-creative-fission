@@ -5,6 +5,7 @@
 合并四层数据：
   L1 程序化动态特征(opencv) + L2 视觉分类(多模态读图) + L3 真实消耗(妙问API) + L4 通顺文案(多模态拆解)
 修复：补回通顺文案字段 / 修复破损<span>标签 / 重构数据排版
+注：VISUAL_CLASSIFICATION 视觉分类表为「脱敏示例」标注，素材ID已匿名(EDU-V0x)，不含具体客户名称与投放数值。
 """
 import json, csv, os, base64, html as htmlescape
 from datetime import datetime
@@ -21,7 +22,7 @@ def _resolve_base():
 
 BASE = _resolve_base()
 GRID_DIR = os.path.join(BASE, 'grid_frames')
-OUT_HTML = os.path.join(BASE, 'xincheng_dynamic_analysis_report.html')
+OUT_HTML = os.path.join(BASE, 'demo_dynamic_analysis_report.html')
 
 # ---- 加载程序化分析结果 ----
 with open(os.path.join(BASE, 'dynamic_analysis.json'), 'r', encoding='utf-8') as f:
@@ -43,25 +44,25 @@ with open(os.path.join(BASE, 'videos_multimodal_fixed.csv'), 'r', encoding='utf-
 #    换项目时把素材ID换成你自己的，并填写对应的视觉格式/叙事拆解。
 #    未列出的素材会回退为空(报告仍可生成，只是缺视觉分类)。
 VISUAL_CLASSIFICATION = {
-    '40632415704': {'format':'户外真人+证书展示','desc':'白毛衣女讲师户外手持红色证书，全程手势丰富自然光','scenes':['开场：证书展示+含金量铺垫','降门槛：不限制专业/越早越好','利益点：选择题满分100分/60分及格','CTA：五险一金+后台联系'],'color_tone':'暖色调/自然光','presenter_style':'活泼亲切/手势频繁','key_visual':'红证书是核心视觉锚点'},
-    '41754594941': {'format':'户外真人+证书展示（同款变体）','desc':'与40632415704同一拍摄风格，户外真人持证','scenes':['开场钩子','利益推进','CTA收尾'],'color_tone':'暖色调/自然光','presenter_style':'亲切自然','key_visual':'证书展示建立信任'},
-    '41379732140': {'format':'纯图文信息卡','desc':'绿色草地蒲公英背景+全屏文字信息卡片，无真人出镜','scenes':['信息密度极高的文字卡片轮播','证书名称+报考条件+福利待遇一次性呈现'],'color_tone':'绿色清新/信息密集','presenter_style':'无真人/纯图文','key_visual':'结构化信息排版是核心','special_note':'仅7.1秒超短！CVR王5.24%——信息直投效率最高'},
-    '42117789987': {'format':'纯图文信息卡（米黄版）','desc':'米黄底色+结构化文字卡片，与41379732140同类但配色不同','scenes':['健康管理师证书核心信息展示'],'color_tone':'米黄温暖/低饱和度','presenter_style':'无真人/纯图文','key_visual':'极简信息卡，运动幅度接近0（几乎静态）'},
-    '39158668835': {'format':'白底口播+动态大字报','desc':'白底单机位女讲师+全屏动态字幕/大字报切换','scenes':['0-5s：FOMO钩子(AI证书+限定名额)','5-11s：降门槛(28岁以下/零基础/60分过)','11-17s：信任状(2025最后机会✓)','17-22s：CTA(直播间入口)'],'color_tone':'干净白底+彩色大字(红黄绿)','presenter_style':'稳定口播+前段手势强调','key_visual':'大字报颜色策略：红=权威/黄=FOMO/绿=确认','special_note':'CTR王候选(3.25%)——钩子吸引力强但CVR偏低(1.74%)'},
-    '39150194052': {'format':'科技风开场→白底口播','desc':'深蓝电路板背景"AI时代"开场(~2秒)→切到白底女讲师持证书','scenes':['0-2s：科技风暗场钩子(电路板+AI时代)','2s+: 切到白底口播模式'],'color_tone':'暗场科技蓝→亮场白底双色系','presenter_style':'开场震撼→转温和讲解','key_visual':'暗场开场制造差异化注意力捕获','special_note':'绝对CTR王(6%)但CVR仅0.43%——钩子太吸引非目标人群'},
-    '38962770012': {'format':'白底口播+字卡（AI工程师标准款）','desc':'经典白底口播+动态字卡，与39158668835同模板','scenes':['FOMO钩子→降门槛→CTA'],'color_tone':'白底+彩色字卡','presenter_style':'稳定口播','key_visual':'标准白底字卡模板'},
-    '38986614588': {'format':'白底口播+字卡','desc':'白底口播+字卡格式','scenes':['口播推进+字卡辅助'],'color_tone':'白底','presenter_style':'口播为主'},
-    '39158727095': {'format':'白底口播+字卡','desc':'白底口播格式','color_tone':'白底'},
-    '39158778319': {'format':'白底口播+字卡','desc':'白底口播长视频(25s)','color_tone':'白底'},
-    '39158811093': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
-    '39290259529': {'format':'快剪/高动态','desc':'高运动幅度，快速节奏','color_tone':'多变'},
-    '39290378461': {'format':'白底+多场景','desc':'白底基础上有多处切镜','color_tone':'白底为主'},
-    '40458376438': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
-    '39773921823': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
-    '39774043280': {'format':'高动态快剪','desc':'快节奏剪辑风格','color_tone':'动态'},
-    '40457882068': {'format':'多场景混剪','desc':'室内讲师→户外证书持有者→手机特写CTA，至少3个独立场景硬切','scenes':['seg1: 室内白顶讲师"健康管理师"','seg2: 室内讲师手势强调','seg3: 切！户外白毛衣女"9零后首选正薪就业"+红证书','seg4: 户外继续+证书展示','seg5: 切！手机屏幕特写"每天刷刷玩手机"','seg6: 手机特写CTA'],'color_tone':'室内冷调→户外暖光→手机近景 三段式','presenter_style':'多角色切换+场景跳切','key_visual':'场景硬切制造视觉新鲜感+手机特写做CTA','special_note':'运动幅度17.6——场景切换带来高动态'},
-    '39314358212': {'format':'场景对比混剪','desc':'证书展示场景→电脑桌面场景（"不能考证/零基础也能考"），用场景切换回应疑虑','scenes':['seg1-2: 女士持AI证书讲解','seg3-4: 证书特写','seg5: 硬切！电脑桌面"不能考证"','seg6: 桌面"零基础也能考"'],'color_tone':'明亮→办公桌面冷调','key_visual':'场景切换=疑虑回应的叙事手法','special_note':'运动幅度最高(24.2)+CVR高达4.71%——场景切换有效促进转化'},
-    '37818264151': {'format':'居家/办公场景口播','desc':'现代家居/办公室环境（落地窗）+女讲师，比纯白底更生活化','scenes':['开场：健康管理师','推进：含金量+手机习惯钩子'],'color_tone':'自然光/生活化暖调','presenter_style':'轻松自然/不像演播室','key_visual':'真实生活场景降低距离感'},
+    'EDU-V01': {'format':'户外真人+证书展示','desc':'户外真人手持证书，自然光，手势丰富','scenes':['开场：证书展示+含金量铺垫','降门槛：不限制专业/越早越好','利益点：选择题满分100分/60分及格','CTA：五险一金+后台联系'],'color_tone':'暖色调/自然光','presenter_style':'活泼亲切/手势频繁','key_visual':'证书是核心视觉锚点'},
+    'EDU-V02': {'format':'户外真人+证书展示（同款变体）','desc':'与EDU-V01同一拍摄风格，户外真人持证','scenes':['开场钩子','利益推进','CTA收尾'],'color_tone':'暖色调/自然光','presenter_style':'亲切自然','key_visual':'证书展示建立信任'},
+    'EDU-V03': {'format':'纯图文信息卡','desc':'绿色清新背景+全屏文字信息卡片，无真人出镜','scenes':['信息密度极高的文字卡片轮播','证书名称+报考条件+福利待遇一次性呈现'],'color_tone':'绿色清新/信息密集','presenter_style':'无真人/纯图文','key_visual':'结构化信息排版是核心','special_note':'超短时长！高CVR——信息直投效率最高'},
+    'EDU-V04': {'format':'纯图文信息卡（米黄版）','desc':'米黄底色+结构化文字卡片，与EDU-V03同类但配色不同','scenes':['健康管理师证书核心信息展示'],'color_tone':'米黄温暖/低饱和度','presenter_style':'无真人/纯图文','key_visual':'极简信息卡，运动幅度接近0（几乎静态）'},
+    'EDU-V05': {'format':'白底口播+动态大字报','desc':'白底单机位女讲师+全屏动态字幕/大字报切换','scenes':['0-5s：FOMO钩子(AI证书+限定名额)','5-11s：降门槛(28岁以下/零基础/60分过)','11-17s：信任状(2025最后机会✓)','17-22s：CTA(直播间入口)'],'color_tone':'干净白底+彩色大字(红黄绿)','presenter_style':'稳定口播+前段手势强调','key_visual':'大字报颜色策略：红=权威/黄=FOMO/绿=确认','special_note':'高CTR候选——钩子吸引力强但CVR偏低'},
+    'EDU-V06': {'format':'科技风开场→白底口播','desc':'深蓝电路板背景"AI时代"开场(~2秒)→切到白底女讲师持证书','scenes':['0-2s：科技风暗场钩子(电路板+AI时代)','2s+: 切到白底口播模式'],'color_tone':'暗场科技蓝→亮场白底双色系','presenter_style':'开场震撼→转温和讲解','key_visual':'暗场开场制造差异化注意力捕获','special_note':'高CTR但CVR偏低——钩子太吸引非目标人群'},
+    'EDU-V07': {'format':'白底口播+字卡（AI工程师标准款）','desc':'经典白底口播+动态字卡，与EDU-V05同模板','scenes':['FOMO钩子→降门槛→CTA'],'color_tone':'白底+彩色字卡','presenter_style':'稳定口播','key_visual':'标准白底字卡模板'},
+    'EDU-V08': {'format':'白底口播+字卡','desc':'白底口播+字卡格式','scenes':['口播推进+字卡辅助'],'color_tone':'白底','presenter_style':'口播为主'},
+    'EDU-V09': {'format':'白底口播+字卡','desc':'白底口播格式','color_tone':'白底'},
+    'EDU-V10': {'format':'白底口播+字卡','desc':'白底口播长视频(25s)','color_tone':'白底'},
+    'EDU-V11': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
+    'EDU-V12': {'format':'快剪/高动态','desc':'高运动幅度，快速节奏','color_tone':'多变'},
+    'EDU-V13': {'format':'白底+多场景','desc':'白底基础上有多处切镜','color_tone':'白底为主'},
+    'EDU-V14': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
+    'EDU-V15': {'format':'白底口播','desc':'白底口播格式','color_tone':'白底'},
+    'EDU-V16': {'format':'高动态快剪','desc':'快节奏剪辑风格','color_tone':'动态'},
+    'EDU-V17': {'format':'多场景混剪','desc':'室内讲师→户外证书持有者→手机特写CTA，至少3个独立场景硬切','scenes':['seg1: 室内白顶讲师"健康管理师"','seg2: 室内讲师手势强调','seg3: 切！户外真人+证书','seg4: 户外继续+证书展示','seg5: 切！手机屏幕特写"每天刷刷玩手机"','seg6: 手机特写CTA'],'color_tone':'室内冷调→户外暖光→手机近景 三段式','presenter_style':'多角色切换+场景跳切','key_visual':'场景硬切制造视觉新鲜感+手机特写做CTA','special_note':'高运动幅度——场景切换带来高动态'},
+    'EDU-V18': {'format':'场景对比混剪','desc':'证书展示场景→电脑桌面场景（"不能考证/零基础也能考"），用场景切换回应疑虑','scenes':['seg1-2: 女士持AI证书讲解','seg3-4: 证书特写','seg5: 硬切！电脑桌面"不能考证"','seg6: 桌面"零基础也能考"'],'color_tone':'明亮→办公桌面冷调','key_visual':'场景切换=疑虑回应的叙事手法','special_note':'高运动幅度+高CVR——场景切换有效促进转化'},
+    'EDU-V19': {'format':'居家/办公场景口播','desc':'现代家居/办公室环境（落地窗）+女讲师，比纯白底更生活化','scenes':['开场：健康管理师','推进：含金量+手机习惯钩子'],'color_tone':'自然光/生活化暖调','presenter_style':'轻松自然/不像演播室','key_visual':'真实生活场景降低距离感'},
 }
 
 # ---- 排序 + 统计 ----
@@ -194,7 +195,7 @@ fmt_rows = '\n'.join(
 
 html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><title>新程教育 · 动态视频深度分析报告</title>
+<head><meta charset="UTF-8"><title>某教育行业客户 · 动态视频深度分析报告</title>
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f8f9fc;color:#1e293b;padding:20px;max-width:1600px;margin:auto}}
@@ -231,7 +232,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 .note b{{color:#1e293b}}
 </style></head>
 <body>
-<div class="header"><h1>🎬 新程教育 · 动态视频深度分析报告</h1>
+<div class="header"><h1>🎬 某教育行业客户 · 动态视频深度分析报告</h1>
 <p>Top{len(prog_sorted)} 视频 · 时序分段动态分析 · opencv转场/运动/色彩 · 多模态视觉验证 · 妙问API真实消耗 · 多模态通顺文案</p></div>
 
 <div class="stats">
