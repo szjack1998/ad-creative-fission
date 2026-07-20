@@ -157,3 +157,9 @@ qiangge-ad-skill/
 ## 📄 License
 
 [MIT](./LICENSE) © 爆款素材拆解裂变器 contributors
+
+---
+
+## 💬 交流 & 反馈
+
+🆕 新建交流群，欢迎交流联系 **feeds888（孤狼）**。使用问题、改进建议、实战案例都欢迎来聊。

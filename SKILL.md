@@ -2,7 +2,7 @@
 name: 爆款素材拆解裂变器
 displayName: 爆款素材拆解裂变器
 slug: ad-creative-fission
-version: "1.3.2"
+version: "1.3.3"
 description: 广告创意「成因分析 + 脚本裂变」一体化工作站，全自动、零手动准备。通过妙问(tencent-ads-assistant) API 自动拉取素材视频与消耗数据，结合多模态自动拆解文案，把创意变量化，定位 winning 母本并批量裂变新脚本。适用：拆解爆款素材、创意变量化、素材打标签、创意归因、分析腾讯广告数据、批量裂变视频脚本/广告文案。触发词："创意成因分析"、"创意变量化"、"素材打标签"、"爆款拆解"、"广告创意优化"、"脚本裂变"、"裂变脚本"、"视频脚本"、"广告文案"、"爆款素材拆解裂变器"、"creatibi"、"creative causal analysis"、"fission"。
 ---
 
@@ -341,3 +341,9 @@ material_video.json  ──▶  videos_multimodal     ──▶  dynamic_analysi
 - **本 skill 默认全自动**：素材与消耗来自妙问API、文案来自多模态自动拆解，使用者无需准备任何 Excel/CSV。`fission_tool.py` 的 xlsx 路径仅为历史兼容，非必需。
 - **HTML 报告必须用纯静态渲染**（零 JS），避免 file:// 安全限制导致空白问题。
 - 图片嵌入优先用 base64 内嵌（自包含），或配合 localhost HTTP 服务器访问相对路径图片。
+
+---
+
+## 💬 交流 & 反馈
+
+🆕 新建交流群，欢迎交流联系 **feeds888（孤狼）**。使用问题、改进建议、实战案例都欢迎来聊。

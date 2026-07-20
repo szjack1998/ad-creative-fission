@@ -71,7 +71,14 @@ jobs:
         env:
           SKHUB_TOKEN: ${{ secrets.SKHUB_TOKEN }}
         run: |
-          python3 ~/.skillhub/skills_store_cli.py publish /tmp/skill_publish \
+          set +e
+          OUT=$(python3 ~/.skillhub/skills_store_cli.py publish /tmp/skill_publish \
             --version "${{ steps.version.outputs.version }}" \
             --changelog "Auto-publish from GitHub Actions (commit ${{ github.sha }})" \
-            --token "$SKHUB_TOKEN"
+            --token "$SKHUB_TOKEN" 2>&1)
+          echo "$OUT"
+          if echo "$OUT" | grep -qiE "已存在|already exist|version.*exist|duplicate"; then
+            echo "::warning::Version already published on SkillHub, skipping re-publish."
+            exit 0
+          fi
+          exit 1
