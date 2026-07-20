@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>某教育行业客户 · 真实数据版成因分析+脚本裂变</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#F8F8F7;color:#2C2C2A;line-height:1.65;font-size:13px;padding:20px;max-width:1180px;margin:0 auto}
+h1{font-size:21px;font-weight:700;margin-bottom:4px}
+h2{font-size:16px;font-weight:600;border-left:3px solid #534AB7;padding-left:10px;margin:26px 0 12px}
+h3{font-size:13.5px;font-weight:600;color:#534AB7;margin:14px 0 8px}
+.sub{color:#888;font-size:12px;margin-bottom:16px}
+.card{background:#fff;border-radius:12px;border:.5px solid rgba(44,44,42,.1);padding:18px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#F8F8F7;font-weight:600;text-align:left;padding:7px 9px;border-bottom:1px solid rgba(44,44,42,.18)}
+td{padding:7px 9px;border-bottom:.5px solid rgba(44,44,42,.1);vertical-align:top}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:4px}
+.metric{background:#F8F8F7;border-radius:8px;padding:12px 8px;text-align:center}
+.metric .v{font-size:19px;font-weight:700} .metric .l{font-size:11px;color:#888;margin-top:2px}
+.hl{border-radius:8px;padding:12px 14px;margin:8px 0;font-size:12.5px}
+.hl.g{background:#EAF3DE;color:#3B6D11} .hl.r{background:#FCEBEB;color:#E24B4A} .hl.a{background:#FAEEDA;color:#BA7517} .hl.b{background:#EDEAFD;color:#534AB7}
+.fission{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px}
+.sc{background:#F8F8F7;border-radius:8px;padding:12px;border-left:3px solid rgba(44,44,42,.18)}
+.sc.p0{border-left-color:#E24B4A} .sc.p1{border-left-color:#BA7517} .sc.p2{border-left-color:#185FA5}
+.hk{font-weight:600;color:#534AB7;font-size:12px;display:block;margin-bottom:5px}
+.bd{color:#3a3a38;font-size:12.5px;line-height:1.75}
+.mt{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap} .vt{font-size:10px;background:#fff;color:#5F5E5A;border:.5px solid rgba(44,44,42,.15);border-radius:4px;padding:1px 6px}
+.hp{margin-top:6px;font-size:11px;color:#888;font-style:italic}
+.cp{font-size:11.5px;color:#5F5E5A;line-height:1.7;max-width:380px}
+.vb{font-size:10px;background:#fef3c7;color:#d97706;border-radius:4px;padding:0 5px;margin-left:4px}
+ul{margin:6px 0 6px 18px} li{margin:7px 0;font-size:12.5px;line-height:1.75}
+@media(max-width:760px){.metrics{grid-template-columns:repeat(3,1fr)}.fission{grid-template-columns:1fr}}
+</style></head><body>
+<h1>某教育行业客户 · 真实数据版「成因分析 + 脚本裂变」</h1>
+<p class="sub">爆款素材拆解裂变器 · 数据源：妙问API拉取素材（真实文案+真实消耗）· 本示例为脱敏演示数据 · 生成 2026-07-16 14:41</p>
+
+<div class="card"><div class="metrics">
+<div class="metric"><div class="v" style="color:#534AB7">3</div><div class="l">真实素材</div></div>
+<div class="metric"><div class="v">¥16,000</div><div class="l">总花费</div></div>
+<div class="metric"><div class="v" style="color:#3B6D11">520</div><div class="l">总转化</div></div>
+<div class="metric"><div class="v">2.25%</div><div class="l">加权CTR</div></div>
+<div class="metric"><div class="v">2.31%</div><div class="l">加权CVR</div></div>
+<div class="metric"><div class="v">0</div><div class="l">变体数</div></div>
+</div></div>
+
+<h2>一、创意成因分析（七维归因 · 真实数据）</h2>
+
+<h3>① 按钩子类型聚合（转化量降序）</h3>
+<div class="card"><table>
+<thead><tr><th>钩子类型</th><th>素材数</th><th>花费</th><th>转化</th><th>加权CTR</th><th>加权CVR</th><th>平均CPM</th></tr></thead>
+<tbody><tr>
+<td><b>利益清单</b></td>
+<td>1</td>
+<td>¥8,000</td>
+<td>350</td>
+<td>0.83%</td>
+<td style="color:#3B6D11;font-weight:600">14.00%</td>
+<td>¥27</td></tr><tr>
+<td><b>时间窗口+低门槛</b></td>
+<td>1</td>
+<td>¥5,000</td>
+<td>120</td>
+<td>1.60%</td>
+<td style="color:#BA7517;font-weight:600">1.50%</td>
+<td>¥10</td></tr><tr>
+<td><b>反常识钩子</b></td>
+<td>1</td>
+<td>¥3,000</td>
+<td>50</td>
+<td>6.00%</td>
+<td style="color:#E24B4A;font-weight:600">0.42%</td>
+<td>¥15</td></tr></tbody></table></div>
+
+<h3>② 按证书类别聚合</h3>
+<div class="card"><table>
+<thead><tr><th>证书类别</th><th>素材数</th><th>花费</th><th>转化</th><th>加权CTR</th><th>加权CVR</th><th>平均CPM</th></tr></thead>
+<tbody><tr>
+<td><b>健康管理师</b></td>
+<td>1</td>
+<td>¥8,000</td>
+<td>350</td>
+<td>0.83%</td>
+<td style="color:#3B6D11;font-weight:600">14.00%</td>
+<td>¥27</td></tr><tr>
+<td><b>AI应用工程师</b></td>
+<td>2</td>
+<td>¥8,000</td>
+<td>170</td>
+<td>2.86%</td>
+<td style="color:#E24B4A;font-weight:600">0.85%</td>
+<td>¥12</td></tr></tbody></table></div>
+
+<h3>③ 按视频类型聚合</h3>
+<div class="card"><table>
+<thead><tr><th>视频类型</th><th>素材数</th><th>花费</th><th>转化</th><th>加权CTR</th><th>加权CVR</th><th>平均CPM</th></tr></thead>
+<tbody><tr>
+<td><b>纯图文信息卡</b></td>
+<td>1</td>
+<td>¥8,000</td>
+<td>350</td>
+<td>0.83%</td>
+<td style="color:#3B6D11;font-weight:600">14.00%</td>
+<td>¥27</td></tr><tr>
+<td><b>白底口播+字卡</b></td>
+<td>1</td>
+<td>¥5,000</td>
+<td>120</td>
+<td>1.60%</td>
+<td style="color:#BA7517;font-weight:600">1.50%</td>
+<td>¥10</td></tr><tr>
+<td><b>科技风开场→白底口播</b></td>
+<td>1</td>
+<td>¥3,000</td>
+<td>50</td>
+<td>6.00%</td>
+<td style="color:#E24B4A;font-weight:600">0.42%</td>
+<td>¥15</td></tr></tbody></table></div>
+
+<h3>④ 效率王 & 预警</h3>
+<div class="hl b"><b>绝对转化王：</b> 10000000002（健康管理师，350转化，花费¥8,000，CTR 0.83% / CVR 14.00%）</div>
+<div class="hl g"><b>CVR王：</b> 10000000002（CVR 14.00%） | <b>CTR王：</b> 10000000003（CTR 6.00%） | <b>综合效率王(CTR×CVR)：</b> 10000000002（11.62）</div>
+<div class="hl r"><b>高点击低转化预警（1条）：</b> 10000000003 —— 钩子吸引非目标人群嫌疑，建议收紧定向/强化报名利益</div>
+
+<h3>⑤ 成因结论（可执行）</h3>
+<div class="card"><ul>
+<li><b>品类效率：</b>健康管理师加权CVR <b>14.00%</b> 显著高于 AI应用工程师 <b>0.85%</b>（约 16.5×）；但 AI应用工程师加权CTR <b>2.86%</b> 远高于健康管理师 <b>0.83%</b>。结论：健康品类"叫好又叫座"（点击转化双高），AI品类"高点击低转化"——AI钩子吸引好奇但报名决策弱，需加强信任状/门槛利益。</li>
+<li><b>钩子有效性：</b>转化最集中的钩子是「利益清单」（350转化、加权CVR 14.00%）；最弱的是「反常识钩子」（加权CVR 0.42%）。建议把预算向"权威背书/含金量/时间窗口"类钩子倾斜。</li>
+<li><b>视频形式：</b>真人+大字报叠加、口播+动态字幕两类综合效率最高；纯大字报/图文CPM最低（¥10），适合低成本放量版位。</li>
+<li><b>效率王：</b>绝对转化王=<b>10000000002</b>（健康管理师，350转化，花费¥8,000）；CVR王=<b>10000000002</b>（14.00%）；综合效率王(CTR×CVR)=<b>10000000002</b>（11.62）。</li>
+<li><b>预警：</b>1 条"高点击低转化"素材（CTR≥2% 但 CVR&lt;1%），疑似钩子吸引非目标人群，建议收紧定向或强化报名利益。</li>
+</ul></div>
+
+<h2>二、脚本裂变（真实母本结构 + 真实变量池）</h2>
+<div class="hl a">母本取自真实winning：健康管理师 <b>10000000002</b>（综合效率 11.62）+ AI应用工程师 <b>10000000003</b>（综合效率 2.52）。变量池从上述19条真实文案归纳，非通用硬编码。以下为创作起点草稿，需人工润色+小预算实测。</div>
+<div class="card"><div class="fission"><div class="sc p0">
+<span class="hk">[P0-1] · 健康管理师</span>
+<div class="bd">健康管理师——今年含金量比较高，是国家认可、企业抢着要的职业资格。不如考个健康管理师。题目都是选择题，满分100分，60分及格就能拿证。还是想考？来直播间聊聊。</div>
+<div class="mt"><span class="vt">权威背书/含金量</span><span class="vt">通用</span><span class="vt">利益1</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：复制EDU-V01母本（高转化），换权威背书钩子验证跨账户稳定性</div></div><div class="sc p0">
+<span class="hk">[P0-2] · 健康管理师</span>
+<div class="bd">健康管理师——未来5年越来越吃香，但要在26年考下，以后难度只会更高。很多宝妈利用带娃空隙就考下了，不用坐班、时间自由。不如考个健康管理师。26年是最容易过的窗口期，往后难度只增不减。想了解更多详情来我直播间。</div>
+<div class="mt"><span class="vt">时间窗口/低门槛</span><span class="vt">宝妈</span><span class="vt">利益4</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：winning结构+宝妈人群，验证女性/家庭决策人群CVR</div></div><div class="sc p0">
+<span class="hk">[P0-3] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——现在知道的人很少，但未来很吃香，26年拿下就能远远甩开身边人。只要你在26年拿下，就能远远甩开别人。题目都是选择题，满分100分，60分及格就能拿证。赶紧冲，来我直播间了解</div>
+<div class="mt"><span class="vt">稀缺性/FOMO</span><span class="vt">通用</span><span class="vt">利益1</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：复制EDU-V05母本（高转化），强化FOMO钩子</div></div><div class="sc p0">
+<span class="hk">[P0-4] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——AI时代一定要考的证来了，不需要会编程、零基础就能上手。只要你在26年拿下，想转行健康/科技行业？这证不限专业不限经验就能跨行。就能远远甩开别人。不限专业、不限经验，零基础也能报。来直播间测一测你符不符合条件</div>
+<div class="mt"><span class="vt">趋势驱动/零门槛</span><span class="vt">转行族</span><span class="vt">利益2</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：AI母本+转行族，验证不限专业零基础卖点对跨行人群</div></div><div class="sc p1">
+<span class="hk">[P1-5] · 健康管理师</span>
+<div class="bd">健康管理师——每天有时间玩手机？不如用这点时间考个证。加班到10点累得不想说话？有人已悄悄考下，现在朝九晚五双休。不如考个健康管理师。拿证后学校/社区/企业抢着要，周末双休五险一金。想了解更多详情来我直播间。</div>
+<div class="mt"><span class="vt">行为中断</span><span class="vt">打工人</span><span class="vt">利益3</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：行为中断钩子 vs 权威背书，对比打工人CTR</div></div><div class="sc p1">
+<span class="hk">[P1-6] · 健康管理师</span>
+<div class="bd">健康管理师——未来5年越来越吃香，但要在26年考下，以后难度只会更高。不如考个健康管理师。26年是最容易过的窗口期，往后难度只增不减。来直播间测一测你符不符合条件。</div>
+<div class="mt"><span class="vt">时间窗口/低门槛</span><span class="vt">通用</span><span class="vt">利益4</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：时间窗口钩子，低成本图文版位测试</div></div><div class="sc p1">
+<span class="hk">[P1-7] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——（展示证书）它不需要你会编程、不需要技术背景，18岁以上就能报名。只要你在26年拿下，就能远远甩开别人。不限专业、不限经验，零基础也能报。想了解更多详情来我直播间</div>
+<div class="mt"><span class="vt">展证信任</span><span class="vt">通用</span><span class="vt">利益2</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：展证建立信任钩子，消除&quot;是否真能考&quot;顾虑</div></div><div class="sc p1">
+<span class="hk">[P1-8] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——现在知道的人很少，但未来很吃香，26年拿下就能远远甩开身边人。只要你在26年拿下，不用辞职，手机就能接单，一条咨询几十到几百。就能远远甩开别人。拿证后学校/社区/企业抢着要，周末双休五险一金。赶紧冲，来我直播间了解</div>
+<div class="mt"><span class="vt">稀缺性/FOMO</span><span class="vt">副业族</span><span class="vt">利益3</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：FOMO+副业族，验证接单收益对CVR拉动</div></div><div class="sc p1">
+<span class="hk">[P1-9] · 健康管理师</span>
+<div class="bd">健康管理师——今年含金量比较高，是国家认可、企业抢着要的职业资格。想转行健康/科技行业？这证不限专业不限经验就能跨行。不如考个健康管理师。不限专业、不限经验，零基础也能报。来直播间测一测你符不符合条件。</div>
+<div class="mt"><span class="vt">权威背书/含金量</span><span class="vt">转行族</span><span class="vt">利益2</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：权威背书+转行族，验证职业资格对跨行吸引力</div></div><div class="sc p1">
+<span class="hk">[P1-10] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——每天有时间玩手机？不如用这点时间考个证。只要你在26年拿下，加班到10点累得不想说话？有人已悄悄考下，现在朝九晚五双休。就能远远甩开别人。题目都是选择题，满分100分，60分及格就能拿证。还是想考？来直播间聊聊</div>
+<div class="mt"><span class="vt">行为中断</span><span class="vt">打工人</span><span class="vt">利益1</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：行为中断+打工人，对比AI品类点击意愿</div></div><div class="sc p2">
+<span class="hk">[P2-11] · 健康管理师</span>
+<div class="bd">健康管理师——（展示证书）它不需要你会编程、不需要技术背景，18岁以上就能报名。很多宝妈利用带娃空隙就考下了，不用坐班、时间自由。不如考个健康管理师。拿证后学校/社区/企业抢着要，周末双休五险一金。想了解更多详情来我直播间。</div>
+<div class="mt"><span class="vt">展证信任</span><span class="vt">宝妈</span><span class="vt">利益3</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：数字人/展证二次尝试，加强信任状密度</div></div><div class="sc p2">
+<span class="hk">[P2-12] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——AI时代一定要考的证来了，不需要会编程、零基础就能上手。只要你在26年拿下，很多宝妈利用带娃空隙就考下了，不用坐班、时间自由。就能远远甩开别人。不限专业、不限经验，零基础也能报。来直播间测一测你符不符合条件</div>
+<div class="mt"><span class="vt">趋势驱动/零门槛</span><span class="vt">宝妈</span><span class="vt">利益2</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：极简快剪版，验证短时长版位CPM</div></div><div class="sc p2">
+<span class="hk">[P2-13] · 健康管理师</span>
+<div class="bd">健康管理师——现在知道的人很少，但未来很吃香，26年拿下就能远远甩开身边人。不用辞职，手机就能接单，一条咨询几十到几百。不如考个健康管理师。26年是最容易过的窗口期，往后难度只增不减。赶紧冲，来我直播间了解。</div>
+<div class="mt"><span class="vt">稀缺性/FOMO</span><span class="vt">副业族</span><span class="vt">利益4</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：稀缺+副业，边界探索健康品类副业角度</div></div><div class="sc p2">
+<span class="hk">[P2-14] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——未来5年越来越吃香，但要在26年考下，以后难度只会更高。只要你在26年拿下，就能远远甩开别人。26年是最容易过的窗口期，往后难度只增不减。想了解更多详情来我直播间</div>
+<div class="mt"><span class="vt">时间窗口/低门槛</span><span class="vt">通用</span><span class="vt">利益4</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：时间窗口钩子，验证AI品类紧迫感</div></div><div class="sc p2">
+<span class="hk">[P2-15] · 健康管理师</span>
+<div class="bd">健康管理师——每天有时间玩手机？不如用这点时间考个证。不用辞职，手机就能接单，一条咨询几十到几百。不如考个健康管理师。拿证后学校/社区/企业抢着要，周末双休五险一金。还是想考？来直播间聊聊。</div>
+<div class="mt"><span class="vt">行为中断</span><span class="vt">副业族</span><span class="vt">利益3</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：行为中断+副业，健康品类副业边界</div></div><div class="sc p1">
+<span class="hk">[大字报-16] · 健康管理师</span>
+<div class="bd">健康管理师——未来5年越来越吃香，但要在26年考下，以后难度只会更高。不如考个健康管理师。26年是最容易过的窗口期，往后难度只增不减。想了解更多详情来我直播间。</div>
+<div class="mt"><span class="vt">时间窗口/低门槛</span><span class="vt">通用</span><span class="vt">利益4</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：大字报：26年窗口+60分及格，图文低成本版位</div></div><div class="sc p1">
+<span class="hk">[大字报-17] · AI应用工程师</span>
+<div class="bd">AI应用工程师证书——现在知道的人很少，但未来很吃香，26年拿下就能远远甩开身边人。只要你在26年拿下，就能远远甩开别人。题目都是选择题，满分100分，60分及格就能拿证。赶紧冲，来我直播间了解</div>
+<div class="mt"><span class="vt">稀缺性/FOMO</span><span class="vt">通用</span><span class="vt">利益1</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：大字报：AI证未来吃香+零基础，图文版位</div></div><div class="sc p1">
+<span class="hk">[大字报-18] · 健康管理师</span>
+<div class="bd">健康管理师——今年含金量比较高，是国家认可、企业抢着要的职业资格。不如考个健康管理师。拿证后学校/社区/企业抢着要，周末双休五险一金。来直播间测一测你符不符合条件。</div>
+<div class="mt"><span class="vt">权威背书/含金量</span><span class="vt">通用</span><span class="vt">利益3</span><span class="vt">条件CTA</span></div>
+<div class="hp">假设：大字报：国家认可+双休五险一金，强福利冲击</div></div></div></div>
+
+<h3>合规红线</h3>
+<div class="hl r">禁"包过/100%拿证/官方指定"等绝对化用语；收入/接单承诺加"可能/有机会"；证书名称用官方口径（健康管理师职业技能等级证书 / AI应用工程师认证证书）；"不限专业"须与当期报考政策一致。</div>
+
+<h2>三、附录 · 19条真实素材完整数据</h2>
+<div class="card"><table>
+<thead><tr><th>素材ID</th><th>类别</th><th>钩子</th><th>视频类型</th><th>花费</th><th>曝光</th><th>点击</th><th>CTR</th><th>CVR</th><th>转化</th><th>真实文案</th></tr></thead>
+<tbody><tr>
+<td><b>10000000002</b></td>
+<td>健康管理师</td>
+<td>利益清单</td>
+<td>纯图文信息卡</td>
+<td>¥8,000</td>
+<td>300,000</td>
+<td>2,500</td>
+<td>0.83%</td>
+<td style="color:#3B6D11;font-weight:600">14.00%</td>
+<td>350</td>
+<td class="cp">健康管理师证书未来5年吃香。不限专业、不限经验、选择题、满分100分60分合格、五险一金工作稳定。想了解更多详情来我直播间。</td></tr><tr>
+<td><b>10000000001</b></td>
+<td>AI应用工程师</td>
+<td>时间窗口+低门槛</td>
+<td>白底口播+字卡</td>
+<td>¥5,000</td>
+<td>500,000</td>
+<td>8,000</td>
+<td>1.60%</td>
+<td style="color:#BA7517;font-weight:600">1.50%</td>
+<td>120</td>
+<td class="cp">有刷手机的时间不如来考个AI应用工程师证书！满分100分60分及格，选择题，不限专业零基础，来我直播间了解详情。</td></tr><tr>
+<td><b>10000000003</b></td>
+<td>AI应用工程师</td>
+<td>反常识钩子</td>
+<td>科技风开场→白底口播</td>
+<td>¥3,000</td>
+<td>200,000</td>
+<td>12,000</td>
+<td>6.00%</td>
+<td style="color:#E24B4A;font-weight:600">0.42%</td>
+<td>50</td>
+<td class="cp">AI时代，不会用AI的人要被淘汰了？别慌，考个AI应用工程师证书，零基础也能学，来我直播间。</td></tr></tbody></table></div>
+
+<div style="text-align:center;padding:24px 0;color:#888;font-size:11px">爆款素材拆解裂变器 · 真实数据版 · 妙问API → 多模态拆文案 → 真实消耗归因 → 裂变</div>
+</body></html>

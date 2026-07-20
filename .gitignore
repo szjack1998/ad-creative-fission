@@ -1,32 +1,25 @@
-# ===== Python =====
+# WorkBuddy Skill - Git Ignore
 __pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-
-# ===== 数据 / 大文件（不入库） =====
-frames_batch/
-grid_frames/
-*.mp4
-*.png
-*.jpg
-*.jpeg
-material_video.json
-material_image.json
-videos_multimodal.csv
-videos_multimodal_fixed.csv
-videos_real_v2.csv
-dynamic_analysis.csv
-manifest.json
-xincheng_*.html
-
-# ===== 敏感信息 =====
-*.token
-.env
-.env.*
-*secret*
-
-# ===== 系统 =====
+*.pyc
+*.pyo
+.git/
+.gitignore
+LICENSE
 .DS_Store
-Thumbs.db
+*.zip
+_publish_tmp/
+_install_test/
+dashboard_raw/
+dashboard_parsed.json
+dashboard_list.md
+afu_*
+gen_*.py
+fix_*.py
+build_*.py
+parse_dashboard.js
+verify_clean.py
+batch_pull.js
+batch_pull_supp.js
+node_modules/
+*.log
+_publish_log_*.txt

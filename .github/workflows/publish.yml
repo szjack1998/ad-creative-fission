@@ -1,0 +1,77 @@
+# Auto-publish WorkBuddy Skill to SkillHub
+# Triggers: push to main branch (or tag v*)
+# Requires: SKHUB_TOKEN secret (your skh_... token from skillhub.cn)
+
+name: Publish to SkillHub
+
+on:
+  push:
+    branches: [main]
+    # Optional: also publish on version tags
+    # tags: ['v*']
+  # Manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install SkillHub CLI
+        run: |
+          pip install --upgrade pip
+          # Download and install skills_store_cli.py
+          mkdir -p ~/.skillhub
+          curl -fsSL https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/latest.tar.gz -o /tmp/skillhub_kit.tar.gz
+          tar -xzf /tmp/skillhub_kit.tar.gz -C /tmp/skillhub_kit
+          cp /tmp/skillhub_kit/skills_store_cli.py ~/.skillhub/
+          chmod +x ~/.skillhub/skills_store_cli.py
+
+      - name: Extract version from SKILL.md
+        id: version
+        run: |
+          VERSION=$(grep '^version:' SKILL.md | head -1 | sed 's/.*: *"\(.*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: $VERSION"
+
+      - name: Clean build (LF + ASCII names + exclude cache)
+        run: |
+          set -e
+          BUILD_DIR="/tmp/skill_publish"
+          rm -rf "$BUILD_DIR"
+          mkdir -p "$BUILD_DIR"
+          
+          # Copy all files except ignored ones
+          rsync -a --exclude='__pycache__' \
+                     --exclude='.git/' \
+                     --exclude='.gitignore' \
+                     --exclude='LICENSE' \
+                     --exclude='.DS_Store' \
+                     --exclude='*.pyc' \
+                     --exclude='_publish_tmp/' \
+                     --exclude='_install_test/' \
+                     . "$BUILD_DIR/"
+          
+          # Convert CRLF to LF
+          find "$BUILD_DIR" -type f \( -name '*.md' -o -name '*.py' -o -name '*.js' -o -name '*.json' -o -name '*.yml' -o -name '*.yaml' \) \
+            -exec sed -i 's/\r$//' {} +
+          
+          echo "Build dir contents:"
+          ls -la "$BUILD_DIR"
+          echo "Total files: $(find "$BUILD_DIR" -type f | wc -l)"
+
+      - name: Publish to SkillHub
+        env:
+          SKHUB_TOKEN: ${{ secrets.SKHUB_TOKEN }}
+        run: |
+          python3 ~/.skillhub/skills_store_cli.py publish /tmp/skill_publish \
+            --version "${{ steps.version.outputs.version }}" \
+            --changelog "Auto-publish from GitHub Actions (commit ${{ github.sha }})" \
+            --token "$SKHUB_TOKEN"
